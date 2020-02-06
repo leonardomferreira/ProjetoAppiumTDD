@@ -1,0 +1,9 @@
+<suite name="Teste-TDD">
+    <test name="ProjetoAndroidTDD">
+        <classes>
+            <class name="br.com.rsinet.hub_tdd.Testes.BuscaPelaTelaInicial"/>
+            <class name="br.com.rsinet.hub_tdd.Testes.BuscaPelaLupa"/>
+            <class name="br.com.rsinet.hub_tdd.Testes.Registro/>
+        </classes>
+    </test>
+</suite>
