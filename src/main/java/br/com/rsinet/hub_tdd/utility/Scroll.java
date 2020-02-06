@@ -25,5 +25,10 @@ public class Scroll {
 	                .moveTo(PointOption.point(toX, toY)).release().perform();
 	    }
 
-	 
+	 public static void scroll(AndroidDriver driver, String visibleText) {
+	        driver.findElementByAndroidUIAutomator(
+	                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+	                        + visibleText + "\").instance(0))");
+	                
+	 }
 }

@@ -8,11 +8,12 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import br.com.rsinet.hub_tdd.Testes.BuscaPelaLupa;
 import br.com.rsinet.hub_tdd.Testes.BuscaPelaTelaInicial;
+import br.com.rsinet.hub_tdd.Testes.Registro;
 import br.com.rsinet.hub_tdd.utility.ExtentReportDemo;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({BuscaPelaLupa.class})
+@SuiteClasses({Registro.class})
 public class TestRunner {
 	
 	@BeforeClass
