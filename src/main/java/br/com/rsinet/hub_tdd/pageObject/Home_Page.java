@@ -7,11 +7,11 @@ public class Home_Page {
 
 	private static AndroidDriver driver;
 	
-	public static MobileElement lnk_Login2(AndroidDriver driver) {
+	public static MobileElement img_Login(AndroidDriver driver) {
 		return (MobileElement) driver.findElementByXPath("//hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout");
 	}
 
-	public static MobileElement lnk_Home(AndroidDriver driver) {
+	public static MobileElement img_Home(AndroidDriver driver) {
 		return (MobileElement) driver.findElementByXPath("//android.view.ViewGroup[@content-desc=\"Home Page\"]");
 	}
 

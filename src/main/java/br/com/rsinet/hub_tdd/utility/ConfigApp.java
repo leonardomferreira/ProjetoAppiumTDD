@@ -30,4 +30,10 @@ public class ConfigApp extends ExtentReportDemo{
 
 		return driver;
 	}
+	public static void closeDriver(AndroidDriver driver) {
+		if (driver != null)
+
+			((AndroidDriver) driver).quit();
+
+	}
 }

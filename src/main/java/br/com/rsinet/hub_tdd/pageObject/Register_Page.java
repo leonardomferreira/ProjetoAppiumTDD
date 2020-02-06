@@ -53,5 +53,8 @@ public class Register_Page {
 	public static MobileElement txtbx_Country(AndroidDriver driver) {
 		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/linearLayoutCountry");
 
-}
+	}
+	public static MobileElement btn_Registrar(AndroidDriver driver) {
+        return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/buttonRegister");
+	}
 }
