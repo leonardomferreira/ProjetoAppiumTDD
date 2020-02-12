@@ -13,7 +13,7 @@ import br.com.rsinet.hub_tdd.utility.ExtentReportDemo;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({Registro.class})
+@SuiteClasses({ BuscaPelaLupa.class, Registro.class, BuscaPelaTelaInicial.class})
 public class TestRunner {
 	
 	@BeforeClass

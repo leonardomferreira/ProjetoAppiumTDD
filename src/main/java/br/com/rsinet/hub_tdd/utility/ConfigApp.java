@@ -11,15 +11,16 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class ConfigApp extends ExtentReportDemo{
 
+	private static AndroidDriver driver;
 	
-	public static AndroidDriver<MobileElement> iniciaApp() throws MalformedURLException {
+	public static AndroidDriver iniciaApp() throws MalformedURLException {
 
-		AndroidDriver<MobileElement> driver;
 		DesiredCapabilities caps = new DesiredCapabilities();
 
 		caps.setCapability("deviceName", "Pixel 2");
 		caps.setCapability("udid", "emulator-5554");
 		caps.setCapability("platformName", "Android");
+		caps.setCapability("newCommandTimeout", "100000");
 		caps.setCapability("platformVersion", "9");
 		caps.setCapability("chromedriverExecutable", "C:\\ChromeDriver3\\chromedriver.exe");
 		caps.setCapability("appPackage", "com.Advantage.aShopping");

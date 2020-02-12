@@ -37,4 +37,8 @@ public class Home_Page {
 		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/imageViewSearch");
 
 	}
+	public static MobileElement clk_User(AndroidDriver driver) {
+		return (MobileElement) driver.findElementById("com.Advantage.aShopping:id/textViewMenuUser");
+		
+	}
 }

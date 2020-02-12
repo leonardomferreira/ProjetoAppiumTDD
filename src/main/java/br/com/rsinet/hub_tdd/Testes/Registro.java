@@ -1,5 +1,8 @@
 package br.com.rsinet.hub_tdd.Testes;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -32,9 +35,10 @@ import io.appium.java_client.touch.offset.PointOption;
 
 public class Registro extends ConfigApp{
 
-	private static AndroidDriver<MobileElement> driver;
+	private AndroidDriver<MobileElement> driver;
 	private TouchAction action;
-	
+	String usuario = "L4ebho5e5";
+
 
 	@Before
 	public void Inicializa() throws MalformedURLException {
@@ -46,7 +50,7 @@ public class Registro extends ConfigApp{
 	ExtentReports extent = ExtentReportDemo.getExtent();
 
 	@Test
-	public void Executa() throws IOException {
+	public void deveRegistrarUmUsuarioValido() throws IOException {
 		test = extent.startTest("Registro valido");
 
 		action = new TouchAction(driver);
@@ -60,7 +64,7 @@ public class Registro extends ConfigApp{
 		Home_Page.clk_CreateAccount(driver).click();
 
 		Register_Page.txtbx_userName(driver).click();
-		Register_Page.txtbx_userName(driver).sendKeys("le647");
+		Register_Page.txtbx_userName(driver).sendKeys(usuario);
 		driver.pressKey(new KeyEvent(AndroidKey.ENTER));
 		Register_Page.txtbx_Email(driver).click();
 		Register_Page.txtbx_Email(driver).sendKeys("leoanrdoe@gmail.com");
@@ -92,22 +96,26 @@ public class Registro extends ConfigApp{
 		action.tap(PointOption.point(706, 1000)).perform();
 
 		Register_Page.txtbx_Zip(driver).sendKeys("04923-392");
-		driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+		driver.pressKey(new KeyEvent(AndroidKey.BACK));
         Register_Page.txtbx_Country(driver).click();
         Scroll.scrollAndClick(driver, "Brazil");
         Scroll.scroll(driver, "REGISTER");
         Scroll.swipe(511, 1326, 511, 736, driver);
         Register_Page.btn_Registrar(driver).click();
-		test.log(LogStatus.PASS, "Teste Passou");
-		String screenShotPath = GetScreenshot.capture(driver, "Registro valido ");
-		test.log(LogStatus.PASS, "Funcionou: " + test.addScreenCapture(screenShotPath));
+        action.waitAction(new WaitOptions().withDuration(Duration.ofMillis(4000))).perform();
+        Home_Page.lnk_Menu(driver).click();
+        action.waitAction(new WaitOptions().withDuration(Duration.ofMillis(2000))).perform();
+        assertTrue(Home_Page.clk_User(driver).getText().equals(usuario));
+        test.log(LogStatus.PASS, "Teste Passou");
+    	String screenShotPath = GetScreenshot.capture(driver, "Registro valido ");
+    	test.log(LogStatus.PASS, "Funcionou: " + test.addScreenCapture(screenShotPath));
 
 	}
 
 	@Test
-	public void ExecutaInvalido() throws IOException {
+	public void naoDeveRegistrarUmUsuarioInvalido() throws IOException {
 		
-	test = extent.startTest("Registro valido");
+	test = extent.startTest("Registro invalido");
 
 	action = new TouchAction(driver);
 
@@ -151,15 +159,17 @@ public class Registro extends ConfigApp{
 	Register_Page.txtbx_City(driver).sendKeys("Osasco");
 	driver.pressKey(new KeyEvent(AndroidKey.ENTER));
 	
-	Register_Page.txtbx_Zip(driver).sendKeys("04923-392");
-	driver.pressKey(new KeyEvent(AndroidKey.ENTER));
+	Register_Page.txtbx_Zip(driver).sendKeys("04@@#923-392");
+	driver.pressKey(new KeyEvent(AndroidKey.BACK));
     Register_Page.txtbx_Country(driver).click();
     Scroll.scrollAndClick(driver, "Brazil");
     Scroll.scroll(driver, "REGISTER");
     Scroll.swipe(511, 1326, 511, 736, driver);
     Register_Page.btn_Registrar(driver).click();
+    
+    assertFalse(Register_Page.btn_Registrar(driver).isEnabled());
 	test.log(LogStatus.PASS, "Teste Passou");
-	String screenShotPath = GetScreenshot.capture(driver, "Registro valido ");
+	String screenShotPath = GetScreenshot.capture(driver, "Registro invalido ");
 	test.log(LogStatus.PASS, "Funcionou: " + test.addScreenCapture(screenShotPath));
 }
 	@After
